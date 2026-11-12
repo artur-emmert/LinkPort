@@ -46,7 +46,6 @@ function atualizarTotal() {
   const opcaoSelecionada = select.options[select.selectedIndex];
   let precoBase = parseFloat(opcaoSelecionada.getAttribute("data-preco")) || 0;
 
-  // Se o cliente escolheu "apenas_curriculo", esconde o checkbox duplicado
   if (select.value === "apenas_curriculo") {
     if (addonContainer) addonContainer.style.display = "none";
     if (checkbox) checkbox.checked = false;
@@ -61,6 +60,26 @@ function atualizarTotal() {
 
   display.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
 }
+
+/**
+ * Abre/fecha o tooltip (?) no card do Portfólio Web (especialmente útil no celular)
+ */
+function toggleTooltip(event, wrapElement) {
+  event.stopPropagation();
+  const isAlreadyActive = wrapElement.classList.contains("active");
+  document.querySelectorAll(".info-tooltip-wrap.active").forEach((el) => {
+    el.classList.remove("active");
+  });
+  if (!isAlreadyActive) {
+    wrapElement.classList.add("active");
+  }
+}
+
+document.addEventListener("click", () => {
+  document.querySelectorAll(".info-tooltip-wrap.active").forEach((el) => {
+    el.classList.remove("active");
+  });
+});
 
 /**
  * Envia os dados do simulador da Landing Page para o WhatsApp do Artur
@@ -105,46 +124,127 @@ function enviarPedidoWhatsApp() {
 }
 
 /**
- * Página de Briefing: Abre o WhatsApp para o cliente mandar áudio de um bloco específico
+ * Reconhecimento de Voz Nativo (Web Speech API) -> Transforma o áudio falado em texto na caixa!
  */
-function mandarAudioBloco(numeroBloco, tituloBloco) {
-  const mensagem = `Olá Artur! Estou na página de perguntas da *LinkPort* e vou te mandar um *ÁUDIO* respondendo a *Parte ${numeroBloco} (${tituloBloco})*! 🎙️`;
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, "_blank");
+let reconhecimentoAtivo = null;
+let botaoAtivo = null;
+
+function iniciarDitadoVoz(btnElement, textareaId) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert(
+      "Seu navegador atual não suporta transcrição direta de voz. Recomendamos abrir no Google Chrome, Edge ou Safari, ou usar o botão de mandar áudio pelo WhatsApp!"
+    );
+    return;
+  }
+
+  const textarea = document.getElementById(textareaId);
+  if (!textarea) return;
+
+  // Se clicou no mesmo botão que já está gravando, para a gravação
+  if (reconhecimentoAtivo && botaoAtivo === btnElement) {
+    reconhecimentoAtivo.stop();
+    return;
+  }
+
+  // Se havia outro botão gravando, encerra o anterior primeiro
+  if (reconhecimentoAtivo) {
+    reconhecimentoAtivo.stop();
+  }
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = "pt-BR";
+  recognition.interimResults = false;
+  recognition.continuous = true;
+
+  reconhecimentoAtivo = recognition;
+  botaoAtivo = btnElement;
+
+  btnElement.classList.add("recording");
+  btnElement.innerHTML = "🛑 Ouvindo... (Toque p/ Parar)";
+  textarea.focus();
+
+  recognition.onresult = (event) => {
+    let novoTexto = "";
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      if (event.results[i].isFinal) {
+        novoTexto += event.results[i][0].transcript.trim() + " ";
+      }
+    }
+
+    if (novoTexto) {
+      const textoAtual = textarea.value.trim();
+      textarea.value = textoAtual ? `${textoAtual} ${novoTexto.trim()}` : novoTexto.trim();
+      salvarRascunhoBriefing();
+    }
+  };
+
+  recognition.onerror = (event) => {
+    if (event.error === "not-allowed") {
+      alert("Permissão de microfone negada. Autorize o uso do microfone no ícone de cadeado da barra de endereço do navegador.");
+    }
+    resetarBotaoMic();
+  };
+
+  recognition.onend = () => {
+    resetarBotaoMic();
+  };
+
+  recognition.start();
+}
+
+function resetarBotaoMic() {
+  if (botaoAtivo) {
+    botaoAtivo.classList.remove("recording");
+    botaoAtivo.innerHTML = "🎙️ Falar Resposta";
+  }
+  reconhecimentoAtivo = null;
+  botaoAtivo = null;
 }
 
 /**
- * Página de Briefing: Alterna a exibição dos campos opcionais de escrita
+ * Salva e restaura rascunho das respostas no navegador do cliente para não perder nada
  */
-let modoEscritaAtivo = false;
-function alternarModoEscrita() {
-  modoEscritaAtivo = !modoEscritaAtivo;
+function salvarRascunhoBriefing() {
   const campos = document.querySelectorAll(".campo-escrita");
-  const btnToggle = document.getElementById("btnToggleEscrita");
-  const btnEnviarEscrito = document.getElementById("btnEnviarEscrito");
-
+  const dados = {};
   campos.forEach((campo) => {
-    campo.style.display = modoEscritaAtivo ? "block" : "none";
+    if (campo.id) {
+      dados[campo.id] = campo.value;
+    }
   });
-
-  if (btnToggle) {
-    btnToggle.innerHTML = modoEscritaAtivo
-      ? "🎙️ Ocultar Caixas de Texto (Prefiro Responder por Áudio)"
-      : "✍️ Mostrar Caixas para Responder por Escrito";
-  }
-
-  if (btnEnviarEscrito) {
-    btnEnviarEscrito.style.display = modoEscritaAtivo ? "inline-flex" : "none";
-  }
+  try {
+    localStorage.setItem("linkport_briefing_rascunho", JSON.stringify(dados));
+  } catch (e) {}
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const campos = document.querySelectorAll(".campo-escrita");
+  if (campos.length > 0) {
+    try {
+      const salvo = JSON.parse(localStorage.getItem("linkport_briefing_rascunho") || "{}");
+      campos.forEach((campo) => {
+        if (campo.id && salvo[campo.id]) {
+          campo.value = salvo[campo.id];
+        }
+        campo.addEventListener("input", salvarRascunhoBriefing);
+      });
+    } catch (e) {}
+  }
+});
+
 /**
- * Página de Briefing: Envia as respostas digitadas para o WhatsApp do Artur
+ * Página de Briefing: Envia todas as respostas (ditadas por voz ou digitadas) em texto para o WhatsApp
  */
 function enviarRespostasEscritas() {
+  if (reconhecimentoAtivo) {
+    reconhecimentoAtivo.stop();
+  }
+
   const campos = document.querySelectorAll(".campo-escrita");
   const linhas = [
-    `Olá Artur! Respondi as perguntas do Briefing da *LinkPort | Impulso Carreira* por escrito:`,
+    `Olá Artur! Respondi as perguntas do Briefing da *LinkPort | Impulso Carreira*:`,
     ``
   ];
 
@@ -159,7 +259,9 @@ function enviarRespostasEscritas() {
   });
 
   if (!algumaResposta) {
-    alert("Você ainda não digitou nenhuma resposta nas caixas de texto. Se preferir, clique no botão verde ao lado para me responder tudo por ÁUDIO no WhatsApp!");
+    alert(
+      "Você ainda não preencheu nenhuma pergunta. Clique em '🎙️ Falar Resposta' em qualquer pergunta para responder com sua voz (ou digite nas caixas) antes de enviar!"
+    );
     return;
   }
 

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkPort | Guia Oficial de Planos, Serviços e Regras de Negócio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm 15mm 15mm 15mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #2C3531;
+      background: #FFFFFF;
+      font-size: 9.8pt;
+      line-height: 1.55;
+    }
+    .serif {
+      font-family: 'Lora', Georgia, serif;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #E07A5F;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #2C3531;
+      color: #F5FFFA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 18pt;
+      font-weight: 700;
+    }
+    .brand-title {
+      font-family: 'Lora', serif;
+      font-size: 18pt;
+      font-weight: 700;
+      color: #2C3531;
+      line-height: 1.1;
+    }
+    .brand-title span {
+      color: #E07A5F;
+      font-style: italic;
+    }
+    .brand-sub {
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #718096;
+      font-weight: 700;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 8pt;
+      color: #4A5568;
+    }
+    .header-meta strong {
+      color: #2C3531;
+      font-size: 8.5pt;
+    }
+
+    .doc-badge {
+      display: inline-block;
+      background: #ECF6F1;
+      border: 1px solid #8FBC8F;
+      color: #2C3531;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 18pt;
+      color: #2C3531;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .lead {
+      color: #4A5568;
+      font-size: 9.5pt;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 13pt;
+      color: #2C3531;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 4px;
+      margin: 16px 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title span {
+      color: #E07A5F;
+      font-style: italic;
+    }
+
+    .caminhos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .caminho-card {
+      background: #FAF9F6;
+      border: 1px solid #E2E8F0;
+      border-left: 3px solid #8FBC8F;
+      padding: 9px 11px;
+      border-radius: 8px;
+    }
+    .caminho-card.destaque {
+      border-left-color: #E07A5F;
+      background: #FFF7F5;
+    }
+    .caminho-title {
+      font-weight: 700;
+      font-size: 9pt;
+      color: #2C3531;
+      margin-bottom: 3px;
+    }
+    .caminho-desc {
+      font-size: 8pt;
+      color: #4A5568;
+      line-height: 1.4;
+    }
+
+    /* Tabela de Planos */
+    .plans-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px 0;
+      font-size: 8.8pt;
+    }
+    .plans-table th {
+      background: #2C3531;
+      color: #FFFFFF;
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 8.5pt;
+      letter-spacing: 0.5px;
+    }
+    .plans-table td {
+      border-bottom: 1px solid #E2E8F0;
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+    .plans-table tr:nth-child(even) td {
+      background: #F8FAF9;
+    }
+    .plan-tag {
+      display: inline-block;
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 3px;
+    }
+    .tag-gold {
+      background: #FFDEAD;
+      color: #2C3531;
+      border: 1px solid #F4C47E;
+    }
+    .tag-sage {
+      background: #ECF6F1;
+      color: #4F7F52;
+      border: 1px solid #8FBC8F;
+    }
+    .price-big {
+      font-family: 'Lora', serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: #2C3531;
+    }
+    .price-strike {
+      font-size: 7.8pt;
+      color: #E07A5F;
+      text-decoration: line-through;
+      display: block;
+    }
+
+    /* Regras de Negócio */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .rule-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #FFFFFF;
+    }
+    .rule-card strong {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #2C3531;
+      font-size: 9pt;
+      margin-bottom: 4px;
+    }
+    .rule-card p {
+      font-size: 8pt;
+      color: #4A5568;
+      line-height: 1.45;
+    }
+
+    .badge-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #E07A5F;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7pt;
+      font-weight: bold;
+    }
+
+    .checklist {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .checklist li {
+      font-size: 8pt;
+      color: #4A5568;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .checklist li::before {
+      content: "✔";
+      color: #4F7F52;
+      font-weight: bold;
+    }
+
+    .footer {
+      border-top: 1px solid #E2E8F0;
+      margin-top: 20px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      color: #718096;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1: APRESENTAÇÃO, POSICIONAMENTO E TABELA DOS PLANOS -->
+  <div class="header">
+    <div class="brand-box">
+      <div class="brand-logo">LP</div>
+      <div>
+        <div class="brand-title">Link<span>Port</span></div>
+        <div class="brand-sub">Impulso Carreira</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>Artur Emmert</strong> • Projetista & Desenvolvedor<br>
+      WhatsApp: (51) 99591-4509 • contato oficial<br>
+      linkedin.com/in/artur-emmert-cs-pm
+    </div>
+  </div>
+
+  <span class="doc-badge">Documento Oficial • Guia de Serviços & Planos</span>
+  <h1>Estrutura de Planos e Regras de Negócio</h1>
+  <p class="lead">
+    Soluções sob medida para trabalhadores da indústria, área técnica, administrativa e gerencial que desejam uma vitrine profissional de respeito para recolocação, abertura a novas conversas ou valorização da trajetória atual.
+  </p>
+
+  <div class="section-title">01 // Os 3 Caminhos de <span>Posicionamento</span></div>
+  <div class="caminhos-grid">
+    <div class="caminho-card">
+      <div class="caminho-title">🎯 1. Recolocação Rápida</div>
+      <div class="caminho-desc">
+        Para quem está em transição ou busca novas vagas. Foco em atração de RHs, busca de empresas na faixa salarial desejada e contato direto com recrutadores.
+      </div>
+    </div>
+    <div class="caminho-card">
+      <div class="caminho-title">💬 2. Aberto a Conversas</div>
+      <div class="caminho-desc">
+        Para quem está empregado e quer manter o perfil aquecido com discrição, pronto para propostas melhores, serviços extras ou oportunidades Home Office.
+      </div>
+    </div>
+    <div class="caminho-card destaque">
+      <div class="caminho-title">🏛️ 3. Orgulho Profissional</div>
+      <div class="caminho-desc">
+        Para quem tem orgulho do próprio trabalho, independentemente do cargo (do estagiário ao gestor), com perfil 100% focado em atribuições e conquistas.
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">02 // Tabela Detalhada de <span>Planos e Entregas</span></div>
+  <table class="plans-table">
+    <thead>
+      <tr>
+        <th style="width: 24%;">Plano</th>
+        <th style="width: 18%;">Investimento</th>
+        <th style="width: 38%;">O Que Está Incluso</th>
+        <th style="width: 20%;">Métricas / Garantias</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong>1. Perfil Campeão</strong><br>
+          <span style="font-size: 7.5pt; color: #718096;">Apenas LinkedIn</span><br>
+          <span class="plan-tag tag-sage">Otimização Total</span>
+        </td>
+        <td>
+          <span class="price-big">R$ 40,00</span><br>
+          <span style="font-size: 7.2pt; color: #718096;">Pagamento Único</span>
+        </td>
+        <td>
+          <ul class="checklist">
+            <li>Reestruturação de Resumo (Sobre) e Experiências</li>
+            <li>Foto de perfil otimizada + Capa personalizada</li>
+            <li>3 posts iniciais estratégicos escritos</li>
+            <li>Opção de acesso direto ou Plano Guiado passo a passo</li>
+          </ul>
+        </td>
+        <td>
+          <span style="font-size: 7.8pt; font-weight: 700; color: #2C3531;">Metas de Rede:</span><br>
+          • ~100 conexões estratégicas<br>
+          • Contato com 2 recrutadores<br>
+          • Mapeamento de empresas
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>2. Portfólio Web</strong><br>
+          <span style="font-size: 7.5pt; color: #718096;">Site Pessoal Completo</span><br>
+          <span class="plan-tag tag-sage">1 Ano Hospedado</span>
+        </td>
+        <td>
+          <span class="price-big">R$ 100,00</span><br>
+          <span style="font-size: 7.2pt; color: #718096;">Site + Hospedagem</span>
+        </td>
+        <td>
+          <ul class="checklist">
+            <li>Site pessoal 100% responsivo (Mobile e Desktop)</li>
+            <li>Seções: Sobre, Projetos de Orgulho, Skills e Contatos</li>
+            <li>Cores e tipografia escolhidas pelo cliente</li>
+            <li>Link pronto para Bio de LinkedIn, WhatsApp e Instagram</li>
+          </ul>
+        </td>
+        <td>
+          <span style="font-size: 7.8pt; font-weight: 700; color: #2C3531;">Entrega Técnica:</span><br>
+          • GitHub Pages / Vercel<br>
+          • 1 ano no ar incluso<br>
+          • Taxa renovação: R$ 20/ano
+        </td>
+      </tr>
+      <tr style="background: #FFFBF0;">
+        <td>
+          <strong>3. Combo Carreira</strong><br>
+          <span style="font-size: 7.5pt; color: #718096;">Portfólio + LinkedIn</span><br>
+          <span class="plan-tag tag-gold">⭐ Destaque Lote 1</span>
+        </td>
+        <td>
+          <span class="price-strike">De R$ 130,00</span>
+          <span class="price-big" style="color: #C85A3D;">R$ 50,00</span><br>
+          <span style="font-size: 7.2pt; color: #C85A3D; font-weight: 700;">10 Primeiros Clientes</span>
+        </td>
+        <td>
+          <ul class="checklist">
+            <li><strong>Tudo do Perfil Campeão</strong> (LinkedIn completo + rede)</li>
+            <li><strong>Tudo do Portfólio Web</strong> (Site hospedado por 1 ano)</li>
+            <li><strong>BÔNUS 1:</strong> Portfólio fixado nos <em>Destaques</em> do LinkedIn</li>
+            <li><strong>BÔNUS 2:</strong> Recomendação profissional escrita no perfil</li>
+          </ul>
+        </td>
+        <td>
+          <span style="font-size: 7.8pt; font-weight: 700; color: #C85A3D;">Solução Completa:</span><br>
+          Maior autoridade visual e tração imediata com recrutadores e gerentes.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>4. Aperfeiçoamento de Currículo</strong><br>
+          <span style="font-size: 7.5pt; color: #718096;">Serviço Adicional</span>
+        </td>
+        <td>
+          <span class="price-big">R$ 15,00</span><br>
+          <span style="font-size: 7.2pt; color: #718096;">Até 3 versões</span>
+        </td>
+        <td>
+          <ul class="checklist">
+            <li>Até 3 versões personalizadas para vagas específicas</li>
+            <li>Formatação ATS (compatível com leitura de robôs de RH)</li>
+            <li>Layout moderno, direto e objetivo em PDF pronto</li>
+          </ul>
+        </td>
+        <td>
+          <span style="font-size: 7.8pt; font-weight: 700; color: #2C3531;">Alta Conversão:</span><br>
+          Adaptação para vagas técnicas, gestão ou Home Office.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div>LinkPort | Impulso Carreira • Documento de Consulta Interna e Comercial</div>
+    <div>Página 1 de 2</div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PÁGINA 2: REGRAS DE NEGÓCIO, POLÍTICAS E PROCESSO DE TRABALHO -->
+  <div class="header">
+    <div class="brand-box">
+      <div class="brand-logo">LP</div>
+      <div>
+        <div class="brand-title">Link<span>Port</span></div>
+        <div class="brand-sub">Impulso Carreira</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>Regras de Negócio & Políticas Comerciais</strong><br>
+      Versão 2.0 • Válida a partir de 2026
+    </div>
+  </div>
+
+  <div class="section-title">03 // Regras de Negócio, <span>Hospedagem & Políticas</span></div>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <strong><span class="badge-icon">1</span> Hospedagem Web (Pages / Vercel)</strong>
+      <p>
+        O Portfólio Web do cliente é hospedado nos servidores do <strong>GitHub Pages</strong> ou <strong>Vercel App</strong> (exemplo: <em>nome-cliente.vercel.app</em>). Por ser uma solução ágil de alavancagem sem necessidade de compra inicial de domínio registrado pelo cliente, o endereço não é 100% customizável, mas possui certificado de segurança SSL (HTTPS) e carregamento instantâneo.
+      </p>
+    </div>
+
+    <div class="rule-card">
+      <strong><span class="badge-icon">2</span> Período de 1 Ano & Taxa de Reativação</strong>
+      <p>
+        A hospedagem do site está inclusa por <strong>1 ano completo</strong> a contar da data de entrega. Após esse período de 12 meses, caso o cliente não renove, o site poderá ser retirado do ar. A taxa de manutenção anual ou reativação do serviço é de apenas <strong>R$ 20,00</strong>. Futuramente, se o cliente quiser apontar um domínio próprio (ex: <em>seunome.com.br</em>), a migração será orçada pontualmente.
+      </p>
+    </div>
+
+    <div class="rule-card">
+      <strong><span class="badge-icon">3</span> Privacidade do LinkedIn (2 Opções)</strong>
+      <p>
+        O cliente decide como prefere a execução:
+        <br>• <strong>Opção A (Mão na massa por mim):</strong> O cliente fornece os dados de acesso temporários e eu realizo toda a montagem, postagens, conexões e ajustes técnicos diretamente na conta.
+        <br>• <strong>Opção B (Privacidade Total):</strong> O cliente não passa senha alguma; eu entrego o <strong>Plano Estruturado Passo a Passo</strong> com todos os textos, imagens de capa e instruções mastigadas para ele mesmo colar no perfil.
+      </p>
+    </div>
+
+    <div class="rule-card">
+      <strong><span class="badge-icon">4</span> Métricas de Conexões e Recrutadores</strong>
+      <p>
+        No Perfil Campeão e no Combo Carreira, está garantido:
+        <br>• Geração de cerca de <strong>100 conexões qualificadas</strong> da área e região do cliente.
+        <br>• Contato e abertura de conversa com <strong>ao menos 2 recrutadores</strong> ou gestores.
+        <br>• Mapeamento de empresas regionais e com vagas Home Office compatíveis com a faixa salarial informada (dispensado caso o perfil seja exclusivo por orgulho da empresa atual).
+      </p>
+    </div>
+
+    <div class="rule-card">
+      <strong><span class="badge-icon">5</span> Coleta de Dados Ágil (Voz ou Texto)</strong>
+      <p>
+        Para que o cliente não tenha preguiça ou dificuldade de escrever:
+        <br>• O cliente pode usar o formulário interativo no site e clicar no botão <strong>"🎙️ Falar Resposta"</strong>: a fala dele é convertida em texto automaticamente na tela via microfone.
+        <br>• O cliente também pode optar por responder conversando por <strong>áudios no WhatsApp</strong>, cabendo a mim transformar os relatos orais em redação corporativa de alta relevância.
+      </p>
+    </div>
+
+    <div class="rule-card">
+      <strong><span class="badge-icon">6</span> Prazos e Revisões</strong>
+      <p>
+        • <strong>Prazo médio de entrega:</strong> 3 a 5 dias úteis após o recebimento das respostas do briefing e fotos.
+        <br>• <strong>Rodadas de ajuste:</strong> Até 2 revisões de texto e layout inclusas sem custo adicional para garantir 100% de satisfação do cliente antes da publicação final.
+        <br>• <strong>Formas de Pagamento:</strong> Pix (50% no início do projeto e 50% na aprovação final).
+      </p>
+    </div>
+  </div>
+
+  <div class="section-title">04 // Fluxo de Atendimento em <span>4 Passos</span></div>
+  <div style="background: #F8FAF9; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 14px; margin-top: 6px; font-size: 8.2pt; color: #4A5568;">
+    <strong style="color: #2C3531;">Passo 1 (Escolha):</strong> Cliente escolhe o plano (LinkedIn, Portfólio ou Combo) e a modalidade de privacidade.<br>
+    <strong style="color: #2C3531;">Passo 2 (Briefing):</strong> Envio do link da página de perguntas para ditar por voz ou responder por áudio no WhatsApp.<br>
+    <strong style="color: #2C3531;">Passo 3 (Desenvolvimento):</strong> Redação técnica dos textos, montagem do site responsivo e estruturação da rede de contatos.<br>
+    <strong style="color: #2C3531;">Passo 4 (Entrega & Tração):</strong> Publicação do portfólio no servidor, entrega dos arquivos, fixação nos Destaques e início das conexões com recrutadores.
+  </div>
+
+  <div class="footer">
+    <div>LinkPort | Impulso Carreira • Documento elaborado por Artur Emmert</div>
+    <div>Página 2 de 2</div>
+  </div>
+
+</body>
+</html>

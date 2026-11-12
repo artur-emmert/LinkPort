@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkPort | Catálogo Oficial de Estilos Visuais, Cores e Tipografias para Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=DM+Serif+Display&family=Poppins:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #2C3531;
+      background: #FFFFFF;
+      font-size: 8.8pt;
+      line-height: 1.45;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #E07A5F;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #2C3531;
+      color: #F5FFFA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 15pt;
+      font-weight: 700;
+    }
+    .brand-title {
+      font-family: 'Lora', serif;
+      font-size: 16pt;
+      font-weight: 700;
+      color: #2C3531;
+      line-height: 1;
+    }
+    .brand-title span {
+      color: #E07A5F;
+      font-style: italic;
+    }
+    .brand-sub {
+      font-size: 7.2pt;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #718096;
+      font-weight: 700;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 7.8pt;
+      color: #4A5568;
+    }
+    .header-meta strong {
+      color: #2C3531;
+    }
+
+    .doc-badge {
+      display: inline-block;
+      background: #ECF6F1;
+      border: 1px solid #8FBC8F;
+      color: #2C3531;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 15.5pt;
+      color: #2C3531;
+      margin-bottom: 4px;
+    }
+    .lead {
+      color: #4A5568;
+      font-size: 8.5pt;
+      margin-bottom: 12px;
+    }
+
+    /* Grid dos Estilos: 2 por linha */
+    .styles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .style-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      page-break-inside: avoid;
+    }
+    .style-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #F0F4F2;
+      padding-bottom: 4px;
+    }
+    .style-num {
+      font-size: 7pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #C85A3D;
+    }
+    .style-name {
+      font-family: 'Lora', serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #2C3531;
+      margin-top: 1px;
+    }
+    .style-tag {
+      font-size: 6.8pt;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #EDF2F7;
+      color: #4A5568;
+    }
+
+    .palette-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 6px 0;
+    }
+    .swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+    .swatch-info {
+      font-size: 7.2pt;
+      color: #718096;
+      font-family: monospace;
+    }
+
+    .info-line {
+      font-size: 7.8pt;
+      color: #4A5568;
+      margin-bottom: 3px;
+    }
+    .info-line strong {
+      color: #2C3531;
+    }
+
+    /* Mini Preview do Estilo */
+    .mini-preview {
+      border-radius: 6px;
+      padding: 7px 9px;
+      margin-top: 6px;
+      font-size: 7.5pt;
+      border: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .preview-btn {
+      font-size: 6.5pt;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer {
+      border-top: 1px solid #E2E8F0;
+      margin-top: 12px;
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.2pt;
+      color: #718096;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1: ESTILOS 01 A 04 -->
+  <div class="header">
+    <div class="brand-box">
+      <div class="brand-logo">LP</div>
+      <div>
+        <div class="brand-title">Link<span>Port</span></div>
+        <div class="brand-sub">Catálogo Visual de Estilos</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>Guia de Escolha Visual do Cliente</strong><br>
+      Cores, Tipografia e Atmosfera para o seu Portfólio Web
+    </div>
+  </div>
+
+  <span class="doc-badge">Catálogo Oficial • 12 Opções de Personalização</span>
+  <h1>Escolha o Estilo Perfeito para a Sua Trajetória</h1>
+  <p class="lead">
+    O seu Portfólio Web pode refletir exatamente o seu perfil profissional. Escolha uma das paletas e combinações abaixo ou nos diga suas cores preferidas para aplicarmos no seu site!
+  </p>
+
+  <div class="styles-grid">
+    <!-- Estilo 01 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 01 // Assinatura LinkPort</div>
+          <div class="style-name">Editorial Mint & Terracotta</div>
+        </div>
+        <span class="style-tag">Identidade Oficial</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Projetistas, Inovação, Engenharia de Produto e Líderes.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Lora (Serifada Elegante)</em> + Plus Jakarta Sans</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Sofisticada, moderna, acolhedora e com ar de estúdio de criação.</div>
+      
+      <div class="palette-row">
+        <div class="swatch" style="background: #F5FFFA;" title="Fundo MintCream"></div>
+        <div class="swatch" style="background: #2C3531;" title="Texto Charcoal"></div>
+        <div class="swatch" style="background: #E07A5F;" title="Acento Terracotta"></div>
+        <div class="swatch" style="background: #8FBC8F;" title="Detalhe Sage"></div>
+        <div class="swatch" style="background: #FFDEAD;" title="Destaque Navajo"></div>
+        <div class="swatch-info">#F5FFFA • #2C3531 • #E07A5F • #8FBC8F</div>
+      </div>
+
+      <div class="mini-preview" style="background: #F5FFFA; color: #2C3531; border-color: rgba(44,53,49,0.15);">
+        <div>
+          <span style="font-family: 'Lora', serif; font-weight: 700; font-size: 8.5pt;">Artur Emmert</span><br>
+          <span style="color: #E07A5F; font-size: 6.8pt; font-weight: 600;">Projetista Técnico & Desenvolvedor</span>
+        </div>
+        <div class="preview-btn" style="background: #E07A5F; color: white;">Ver Projetos</div>
+      </div>
+    </div>
+
+    <!-- Estilo 02 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 02 // Alta Gestão</div>
+          <div class="style-name">Executive Navy & Champagne</div>
+        </div>
+        <span class="style-tag">Gerência & Comercial</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Gerentes de Produção, Supervisores, Comercial e Consultores.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Playfair Display</em> + Montserrat</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Imponente, tradicional, transmite liderança sólida e autoridade.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #F8F9FC;" title="Fundo Ice Blue"></div>
+        <div class="swatch" style="background: #0F172A;" title="Azul Marinho Profundo"></div>
+        <div class="swatch" style="background: #1E3A8A;" title="Azul Royal Clássico"></div>
+        <div class="swatch" style="background: #D97706;" title="Dourado Champagne"></div>
+        <div class="swatch-info">#F8F9FC • #0F172A • #1E3A8A • #D97706</div>
+      </div>
+
+      <div class="mini-preview" style="background: #F8F9FC; color: #0F172A; border-color: #CBD5E1;">
+        <div>
+          <span style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 8.5pt;">Marcos Silveira</span><br>
+          <span style="color: #D97706; font-size: 6.8pt; font-weight: 600;">Gerente Industrial • 18 Anos de Trajetória</span>
+        </div>
+        <div class="preview-btn" style="background: #0F172A; color: white;">Contato Direto</div>
+      </div>
+    </div>
+
+    <!-- Estilo 03 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 03 // Chão de Fábrica & Metal</div>
+          <div class="style-name">Industrial Steel & Amber</div>
+        </div>
+        <span class="style-tag">Matrizaria & CNC</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Matrizeiros, Operadores de Usinagem, Técnicos Mecânicos e Solda.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Barlow Condensed</em> + Roboto</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Robusta, precisa, inspirada na usinagem de aço e ferramentas pesadas.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #181C20;" title="Grafite Metal"></div>
+        <div class="swatch" style="background: #2B3238;" title="Aço Escovado"></div>
+        <div class="swatch" style="background: #F59E0B;" title="Âmbar Industrial"></div>
+        <div class="swatch" style="background: #F1F5F9;" title="Texto Claro"></div>
+        <div class="swatch-info">#181C20 • #2B3238 • #F59E0B • #F1F5F9</div>
+      </div>
+
+      <div class="mini-preview" style="background: #181C20; color: #F1F5F9; border-color: #2B3238;">
+        <div>
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; letter-spacing: 0.5px;">CARLOS EDUARDO</span><br>
+          <span style="color: #F59E0B; font-size: 6.8pt; font-weight: 600;">Mestre Matrizeiro • Centros de Usinagem CNC</span>
+        </div>
+        <div class="preview-btn" style="background: #F59E0B; color: #181C20;">Ver Matrizes</div>
+      </div>
+    </div>
+
+    <!-- Estilo 04 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 04 // Tecnologia & Dados</div>
+          <div class="style-name">Tech Slate & Emerald</div>
+        </div>
+        <span class="style-tag">Dados / TI / Automação</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Analistas de Dados, Desenvolvedores de Scripts e Automação.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Space Grotesk</em> + JetBrains Mono</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Futurista, ágil, código limpo, visual de terminal de dados moderno.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #0F172A;" title="Slate Black"></div>
+        <div class="swatch" style="background: #1E293B;" title="Card Slate"></div>
+        <div class="swatch" style="background: #10B981;" title="Verde Esmeralda"></div>
+        <div class="swatch" style="background: #38BDF8;" title="Ciano Tech"></div>
+        <div class="swatch-info">#0F172A • #1E293B • #10B981 • #38BDF8</div>
+      </div>
+
+      <div class="mini-preview" style="background: #0F172A; color: #F8FAFC; border-color: #1E293B;">
+        <div>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 8.5pt;">Rodrigo Silva</span><br>
+          <span style="color: #10B981; font-family: monospace; font-size: 6.8pt;">Python • Power BI • Automação</span>
+        </div>
+        <div class="preview-btn" style="background: #10B981; color: #0F172A;">Ver Scripts</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>LinkPort | Impulso Carreira • Catálogo de Estilos Visuais</div>
+    <div>Página 1 de 3</div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PÁGINA 2: ESTILOS 05 A 08 -->
+  <div class="header">
+    <div class="brand-box">
+      <div class="brand-logo">LP</div>
+      <div>
+        <div class="brand-title">Link<span>Port</span></div>
+        <div class="brand-sub">Catálogo Visual de Estilos</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>Opções Visuais 05 a 08</strong><br>
+      Designs Minimalistas, Criativos e Corporativos
+    </div>
+  </div>
+
+  <div class="styles-grid">
+    <!-- Estilo 05 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 05 // Essencial & Prático</div>
+          <div class="style-name">Pure Minimalist White</div>
+        </div>
+        <span class="style-tag">Administrativo / Geral</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Auxiliares de Escritório, PCP, Almoxarifado e Início de Carreira.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Inter</em> + Plus Jakarta Sans</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Extremamente limpa, rápida leitura, foco absoluto em organização.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #FFFFFF;" title="Branco"></div>
+        <div class="swatch" style="background: #F1F5F9;" title="Cinza Suave"></div>
+        <div class="swatch" style="background: #0F172A;" title="Preto Puro"></div>
+        <div class="swatch" style="background: #2563EB;" title="Azul Real"></div>
+        <div class="swatch-info">#FFFFFF • #F1F5F9 • #0F172A • #2563EB</div>
+      </div>
+
+      <div class="mini-preview" style="background: #FFFFFF; color: #0F172A; border-color: #E2E8F0;">
+        <div>
+          <span style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 8.5pt;">Juliana Mendes</span><br>
+          <span style="color: #2563EB; font-size: 6.8pt; font-weight: 600;">Assistente Administrativa & PCP</span>
+        </div>
+        <div class="preview-btn" style="background: #2563EB; color: white;">Currículo</div>
+      </div>
+    </div>
+
+    <!-- Estilo 06 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 06 // Calçados & Moda Industrial</div>
+          <div class="style-name">Leather & Burnt Orange</div>
+        </div>
+        <span class="style-tag">Modelagem & Estilo</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Modelistas de Calçados, Designers de Produto e Desenvolvimento.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>DM Serif Display</em> + Poppins</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Artesanal refinada, remete a matérias-primas nobres, tecidos e couro.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #FAF7F2;" title="Areia / Linho"></div>
+        <div class="swatch" style="background: #3E2723;" title="Café Couro"></div>
+        <div class="swatch" style="background: #D9531E;" title="Laranja Queimado"></div>
+        <div class="swatch" style="background: #8D6E63;" title="Argila Suave"></div>
+        <div class="swatch-info">#FAF7F2 • #3E2723 • #D9531E • #8D6E63</div>
+      </div>
+
+      <div class="mini-preview" style="background: #FAF7F2; color: #3E2723; border-color: #E7E0D3;">
+        <div>
+          <span style="font-family: 'DM Serif Display', serif; font-size: 9pt;">Fernanda Ramos</span><br>
+          <span style="color: #D9531E; font-size: 6.8pt; font-weight: 600;">Modelista Calçadista • Desenvolvimento 3D</span>
+        </div>
+        <div class="preview-btn" style="background: #D9531E; color: white;">Coleções</div>
+      </div>
+    </div>
+
+    <!-- Estilo 07 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 07 // Engenharia & Qualidade</div>
+          <div class="style-name">Petroleum & Orange Accent</div>
+        </div>
+        <span class="style-tag">Qualidade & Processos</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Analistas de Qualidade, Engenheiros de Processos e Lean / 5S.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Montserrat</em> + Inter</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Técnica, métrica, visual de certificação ISO e controle de conformidade.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #F4F7F6;" title="Fundo Neutro"></div>
+        <div class="swatch" style="background: #113F48;" title="Azul Petróleo"></div>
+        <div class="swatch" style="background: #EA580C;" title="Laranja Alerta"></div>
+        <div class="swatch" style="background: #94A3B8;" title="Cinza Suporte"></div>
+        <div class="swatch-info">#F4F7F6 • #113F48 • #EA580C • #94A3B8</div>
+      </div>
+
+      <div class="mini-preview" style="background: #F4F7F6; color: #113F48; border-color: #CBD5E1;">
+        <div>
+          <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5pt;">Luciano Castro</span><br>
+          <span style="color: #EA580C; font-size: 6.8pt; font-weight: 600;">Especialista Lean Manufacturing & 5S</span>
+        </div>
+        <div class="preview-btn" style="background: #113F48; color: white;">Resultados</div>
+      </div>
+    </div>
+
+    <!-- Estilo 08 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 08 // Sustentabilidade & Método</div>
+          <div class="style-name">Nordic Sage & Mineral</div>
+        </div>
+        <span class="style-tag">Ambiental / Cronoanálise</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Gestão de Resíduos, Cronoanalistas e Otimização de Métodos.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Plus Jakarta Sans</em> + Lora</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Equilibrada, serena, transmite inteligência operacional e sustentável.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #F2F6F4;" title="Verde Névoa"></div>
+        <div class="swatch" style="background: #2D3A34;" title="Verde Escuro Grafite"></div>
+        <div class="swatch" style="background: #5B8C71;" title="Sálvia Floresta"></div>
+        <div class="swatch" style="background: #E5EBE8;" title="Cinza Mineral"></div>
+        <div class="swatch-info">#F2F6F4 • #2D3A34 • #5B8C71 • #E5EBE8</div>
+      </div>
+
+      <div class="mini-preview" style="background: #F2F6F4; color: #2D3A34; border-color: #D3E0D8;">
+        <div>
+          <span style="font-weight: 700; font-size: 8.5pt;">Patricia Oliveira</span><br>
+          <span style="color: #5B8C71; font-size: 6.8pt; font-weight: 600;">Engenharia de Métodos & Processos</span>
+        </div>
+        <div class="preview-btn" style="background: #5B8C71; color: white;">Projetos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>LinkPort | Impulso Carreira • Catálogo de Estilos Visuais</div>
+    <div>Página 2 de 3</div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PÁGINA 3: ESTILOS 09 A 12 + GUIA DE COMBINAÇÃO -->
+  <div class="header">
+    <div class="brand-box">
+      <div class="brand-logo">LP</div>
+      <div>
+        <div class="brand-title">Link<span>Port</span></div>
+        <div class="brand-sub">Catálogo Visual de Estilos</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>Opções Visuais 09 a 12 & Dicas de Escolha</strong><br>
+      Personalização Liberal de Acordo com a Sua Vontade
+    </div>
+  </div>
+
+  <div class="styles-grid">
+    <!-- Estilo 09 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 09 // Jovial & Expansivo</div>
+          <div class="style-name">Fresh Cyan & Vibrant Coral</div>
+        </div>
+        <span class="style-tag">Estágio & Novos Talentos</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Estagiários, Jovens Aprendizes, Estudantes e Trainees.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Poppins</em> + Inter</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Energética, amigável, demonstra vontade de crescer e facilidade de aprender.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #F0F9FF;" title="Céu Claro"></div>
+        <div class="swatch" style="background: #0C4A6E;" title="Azul Mar"></div>
+        <div class="swatch" style="background: #0284C7;" title="Azul Vibrante"></div>
+        <div class="swatch" style="background: #F43F5E;" title="Coral Energético"></div>
+        <div class="swatch-info">#F0F9FF • #0C4A6E • #0284C7 • #F43F5E</div>
+      </div>
+
+      <div class="mini-preview" style="background: #F0F9FF; color: #0C4A6E; border-color: #BAE6FD;">
+        <div>
+          <span style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 8.5pt;">Lucas Gabriel</span><br>
+          <span style="color: #0284C7; font-size: 6.8pt; font-weight: 600;">Estudante Técnico • Disponível p/ Estágio</span>
+        </div>
+        <div class="preview-btn" style="background: #0284C7; color: white;">Ver Perfil</div>
+      </div>
+    </div>
+
+    <!-- Estilo 10 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 10 // Alto Impacto</div>
+          <div class="style-name">Monochrome & Acid Lime</div>
+        </div>
+        <span class="style-tag">Design & Automação</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Criativos arrojados, Programadores CNC e Especialistas 3D.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Space Grotesk</em> + Roboto</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Contraste radical de preto e branco com ponto de luz cítrico chamativo.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #111111;" title="Preto Puro"></div>
+        <div class="swatch" style="background: #222222;" title="Cinza Escuro"></div>
+        <div class="swatch" style="background: #D4FF00;" title="Lima Cítrico"></div>
+        <div class="swatch" style="background: #FFFFFF;" title="Branco"></div>
+        <div class="swatch-info">#111111 • #222222 • #D4FF00 • #FFFFFF</div>
+      </div>
+
+      <div class="mini-preview" style="background: #111111; color: #FFFFFF; border-color: #333333;">
+        <div>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 8.5pt;">GABRIEL NUNES</span><br>
+          <span style="color: #D4FF00; font-size: 6.8pt; font-weight: 600;">Renderização 3D & Simulação Virtual</span>
+        </div>
+        <div class="preview-btn" style="background: #D4FF00; color: #111111;">Portfólio</div>
+      </div>
+    </div>
+
+    <!-- Estilo 11 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 11 // Acadêmico & Pesquisa</div>
+          <div class="style-name">Burgundy & Warm Cream</div>
+        </div>
+        <span class="style-tag">Docência / Instrutoria</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Instrutores Técnicos (SENAI/Liberato), Pesquisadores e Mestres.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Lora</em> + Plus Jakarta Sans</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Solene, intelectual, valoriza artigos, certificações e histórico de ensino.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #FCFBF7;" title="Creme Quente"></div>
+        <div class="swatch" style="background: #4A1521;" title="Bordô Vinho"></div>
+        <div class="swatch" style="background: #8B263E;" title="Vinho Claro"></div>
+        <div class="swatch" style="background: #D4AF37;" title="Dourado Velho"></div>
+        <div class="swatch-info">#FCFBF7 • #4A1521 • #8B263E • #D4AF37</div>
+      </div>
+
+      <div class="mini-preview" style="background: #FCFBF7; color: #4A1521; border-color: #EBDDC8;">
+        <div>
+          <span style="font-family: 'Lora', serif; font-weight: 700; font-size: 8.5pt;">Prof. Henrique Becker</span><br>
+          <span style="color: #8B263E; font-size: 6.8pt; font-weight: 600;">Instrutor Técnico de Mecânica Industrial</span>
+        </div>
+        <div class="preview-btn" style="background: #4A1521; color: white;">Currículo Lattes</div>
+      </div>
+    </div>
+
+    <!-- Estilo 12 -->
+    <div class="style-card">
+      <div class="style-header">
+        <div>
+          <div class="style-num">Estilo 12 // Corporativo Sóbrio</div>
+          <div class="style-name">Charcoal Classic & Cyan</div>
+        </div>
+        <span class="style-tag">Compradores / Suprimentos</span>
+      </div>
+      <div class="info-line"><strong>Recomendado para:</strong> Compradores Industriais, Suprimentos, Logística e Negociação.</div>
+      <div class="info-line"><strong>Tipografia:</strong> <em>Montserrat</em> + Inter</div>
+      <div class="info-line"><strong>Atmosfera:</strong> Discreta, focada em negociações sérias e parcerias corporativas sólidas.</div>
+
+      <div class="palette-row">
+        <div class="swatch" style="background: #F8FAFC;" title="Cinza Claro"></div>
+        <div class="swatch" style="background: #334155;" title="Ardósia Escura"></div>
+        <div class="swatch" style="background: #0284C7;" title="Ciano Corporativo"></div>
+        <div class="swatch" style="background: #64748B;" title="Cinza Médio"></div>
+        <div class="swatch-info">#F8FAFC • #334155 • #0284C7 • #64748B</div>
+      </div>
+
+      <div class="mini-preview" style="background: #F8FAFC; color: #334155; border-color: #E2E8F0;">
+        <div>
+          <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5pt;">Valéria Santos</span><br>
+          <span style="color: #0284C7; font-size: 6.8pt; font-weight: 600;">Compradora Técnica • Gestão de Fornecedores</span>
+        </div>
+        <div class="preview-btn" style="background: #334155; color: white;">Contato</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIA DE ESCOLHA PRÁTICA -->
+  <div style="background: #FAF9F6; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 8pt; color: #4A5568;">
+    <strong style="color: #2C3531; font-size: 8.5pt;">💡 Como Escolher o Seu Estilo com a LinkPort:</strong><br>
+    <strong>1. Pelo número do estilo:</strong> Basta me dizer: <em>"Artur, gostei do Estilo 03 (Industrial Steel)"</em> ou <em>"Prefiro o Estilo 01 (Mint & Terracotta)"</em>.<br>
+    <strong>2. Combinação sob medida:</strong> Quer misturar? Ex: <em>"Gostei das cores do Estilo 02, mas com as fontes do Estilo 01"</em> — nós montamos exatamente assim!<br>
+    <strong>3. Suas próprias cores:</strong> Se você tiver uma cor favorita (azul, vermelho, verde, etc.), adaptamos toda a harmonia do site em volta dela.
+  </div>
+
+  <div class="footer">
+    <div>LinkPort | Impulso Carreira • Elaborado por Artur Emmert</div>
+    <div>Página 3 de 3</div>
+  </div>
+
+</body>
+</html>
